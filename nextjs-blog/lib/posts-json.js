@@ -4,16 +4,14 @@ import path from 'path';
 // this is the path to the data folder
 const dataDir = path.join(process.cwd(), 'data');
 
-// this function gathers data from the posts.json file in a callable way
-// to be fair gemma3 wrote this function but i refactord the rest myself
-// and now looking at it, im embarrassed that i didnt write this myself
-// i should have tried to logic it out myself, but i was in solve the problem mode 
-// not, you know, learning mode, so just pretend this isnt here
-export const loadPostsData = () => {
+//This is the refactored code. It gets the raw data from the post.json file 
+// and returns it to the function one called. 
+export function loadPostsData() {
     const filePath = path.join(dataDir, 'posts.json');
     const jsonString = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(jsonString);
-};
+}
+
 // this function gets, sorts and returns the data from the posts.json 
 // it returns the posts id, title, and date, sorted by title
 export function getSortedPostsData() {
